@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-
+import Projects from './Projects'; 
 
 
 class App extends Component {
-   constructor() {
-      super(); 
-      this.state = {
-         displayBio: false
-      };
+   state = {
+      displayBio: false
+   };
+      
+   toggleDisplayBio = () => {
+      this.setState({ displayBio: !this.state.displayBio });
    }
-   
+
    render () {
       return (
          <div>
@@ -22,11 +23,18 @@ class App extends Component {
                      <p>I live in the Twin Cities and love to walk the trails and paths in my neighborhood.</p>
                      <p>My favorite JavaScript library is React.</p>
                      <p>In addition to coding, I love a little true crime TV and coffee!</p>  
+                     <button onClick={this.toggleDisplayBio}> Show Less</button>
                   </div> 
-               ) : null
+               ) : (
+                  <div>
+                     <button onClick={this.toggleDisplayBio}>Learn More</button>
+                  </div>
+               )
             }
+            <hr />
+            <Projects />
          </div>
-      );
+      )
    }
 }
 
